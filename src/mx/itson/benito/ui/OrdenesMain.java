@@ -43,6 +43,8 @@ public class OrdenesMain extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         btnVerArticulos = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        btnCambiar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -104,6 +106,18 @@ public class OrdenesMain extends javax.swing.JFrame {
         jMenu1.add(btnVerArticulos);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Cambiar estado");
+
+        btnCambiar.setText("Cambiar");
+        btnCambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarActionPerformed(evt);
+            }
+        });
+        jMenu2.add(btnCambiar);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -189,6 +203,25 @@ public class OrdenesMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnVerArticulosActionPerformed
 
+    private void btnCambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarActionPerformed
+        
+        try{
+
+            int renglon = tblOrdenes.getSelectedRow();
+            int id = Integer.parseInt( tblOrdenes.getModel().getValueAt(renglon, 0).toString());
+
+            new CambiarEstado(this, true, id).setVisible(true);
+
+            cargarTabla();
+
+        }catch(Exception ex){
+
+            System.err.println("Ocurrio un error: " + ex.getMessage());
+
+        }
+        
+    }//GEN-LAST:event_btnCambiarActionPerformed
+
     /**
      * Sirve para imprimir la tabla de la base de datos a la tabla que vera el usuiario
      */
@@ -253,10 +286,12 @@ public class OrdenesMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem btnAgregar;
+    private javax.swing.JMenuItem btnCambiar;
     private javax.swing.JMenuItem btnEditar;
     private javax.swing.JMenuItem btnEliminar;
     private javax.swing.JMenuItem btnVerArticulos;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenu lblOpcione;

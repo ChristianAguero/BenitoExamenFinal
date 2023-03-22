@@ -43,6 +43,8 @@
         
         <mapping class = "mx.itson.benito.entidades.OrdenCompra"/>
         
+        <mapping class = "mx.itson.benito.entidades.EstadoProducto"/>
+        
     </session-factory>
 
 </hibernate-configuration>
